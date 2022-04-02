@@ -1,9 +1,9 @@
-FROM alpine:latest
+FROM alpine:3.15
 LABEL maintainer="Juan Baez"
 
 ARG CONFIGUREFLAGS="--prefix=/services --disable-nls"
 
-ENV TARGET_RELEASE v7.2.10-r2
+ENV TARGET_RELEASE v7.2.12
 
 # Install the build dependencies
 RUN apk add --no-cache build-base git musl openssl openssl-dev gnutls gnutls-dev
@@ -29,3 +29,4 @@ RUN mkdir -p /services \
 USER atheme
 VOLUME ["/services/etc" "/services/var"]
 ENTRYPOINT ["/services/bin/atheme-services", "-p", "/services/atheme.pid", "-n"]
+
